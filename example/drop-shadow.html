@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>PNG格式小图标的CSS任意颜色赋色技术</title>
+<meta charset="utf-8" />
+<style type="text/css">
+.icon {
+    display: inline-block;
+    width: 20px; height: 20px;
+    overflow: hidden;
+}
+.icon-del {
+    background: url(images/delete.png) no-repeat center;
+}
+.icon > .icon {
+    position: relative;
+    left: -20px;
+    /*在Chrome浏览器下,如果一个元素的主体部分，无论以何种方式，只要在页面中不可见，其drop-shadow是不可见的；实体部分哪怕有1像素可见，则drop-shadow完全可见。*/
+    border-right: 20px solid transparent;
+    -webkit-filter: drop-shadow(20px 0 rgba(225,126,0,1));
+    filter: drop-shadow(20px 0 rgba(225,126,0,1));    
+}
+</style>
+</head>
+<body>
+<p><strong>原始图标</strong></p>
+<i class="icon icon-del"></i>
+<p><strong>可以变色的图标</strong></p>
+<i class="icon"><i class="icon icon-del"></i></i>
+</body>
+</html>
